@@ -1,0 +1,20 @@
+    <table>
+        <thead>
+            <tr>
+                <th>Institucion</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($arrayInstitucion as $dato)
+                <tr>
+                    <td>{{$dato->Nombre}}</td>
+                    <td>{{$dato->Direccion}}</td>
+                    <td>{{$dato->Telefono}}</td>
+                    <td>{{$dato->Email}}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
