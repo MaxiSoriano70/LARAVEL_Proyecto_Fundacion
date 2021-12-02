@@ -1,3 +1,19 @@
+@if ($errors->has('Nombre')) 
+    <div>*El campo Nombre no puede se null</div><br>
+
+@endif
+@if ($errors->has('Direccion')) 
+    <div>*El campo Direecion no puede se null</div><br>
+
+@endif
+@if ($errors->has('Telefono')) 
+    <div>*El campo Telefono no puede se null</div><br>
+
+@endif
+@if ($errors->has('Email')) 
+    <div>*El campo Email no puede se null y tiene que tener la siguiente estructura "example@example.com"</div><br>
+
+@endif
 <title>{{$Titulo}}</title>
     <form method="POST" action="{{ route('Institucion.store'); }}">
         @csrf

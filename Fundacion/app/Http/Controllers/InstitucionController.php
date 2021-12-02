@@ -44,7 +44,15 @@ class InstitucionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //'email' => 'email:rfc,dns'
+
+        $validated = $request->validate([
+            'Nombre' => 'required|max:45',
+            'Direccion' => 'required|max:45',
+            'Telefono' => 'required|max:45',
+            'Email' => 'email:rfc,dns'
+        ]);
+
         $Nombre = $request->post("Nombre");
         $Direccion = $request->post("Direccion");
         $Telefono = $request->post("Telefono");
@@ -128,6 +136,12 @@ class InstitucionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'Nombre' => 'required|max:45',
+            'Direccion' => 'required|max:45',
+            'Telefono' => 'required|max:45',
+            'Email' => 'email:rfc,dns'
+        ]);
         $Nombre = $request->post("Nombre");
         $Direccion = $request->post("Direccion");
         $Telefono = $request->post("Telefono");
