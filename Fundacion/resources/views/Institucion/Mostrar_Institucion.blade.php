@@ -1,5 +1,6 @@
+@include('Nav.Nav')
 <h1>Hola soy el show</h1>
-<table>
+<table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>
             <th>Id</th>
@@ -73,3 +74,9 @@
         @endforeach
     </tbody>
 </table>
+@include('Footer.Footer')
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
