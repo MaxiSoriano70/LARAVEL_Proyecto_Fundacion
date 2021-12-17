@@ -2,31 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use GrahamCampbell\ResultType\Result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class PersonalController extends Controller
+class EstudiantesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-
-        $id = $request->get("id");
-        $nombre = $request->get("nombre");
-        $apellido = $request->get("apellido");
-
-        session()->put("id", $id);
-        session()->push('nombre', $nombre);
-        session()->push('apellido', $apellido);
-        var_dump(session("id"));
-        var_dump(session("nombre"));
-        var_dump(session("apellido"));
-        
-        echo "<h1> Hola esta es la ventana de Personal</h1>";
+        $estudiantes = DB::table("Estudiantes")->select("*")->get();
+        $parametros = [
+            "arrayEstudiantes" => $estudiantes
+        ];
+        return view("Estudiantes.Estudiantes", $parametros);
     }
 
     /**
@@ -37,6 +29,7 @@ class PersonalController extends Controller
     public function create()
     {
         //
+        return view("Estudiantes.Crear_Estudiantes");
     }
 
     /**

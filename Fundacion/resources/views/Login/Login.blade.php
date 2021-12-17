@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,6 @@
 
     </head>
     <body >
-        @include('Nav.Nav')
         <h1>BIENVENIDOS AL LOGIN</h1>
             <form method="POST" action="{{ route('Login.diferenciar'); }}">
                 @csrf

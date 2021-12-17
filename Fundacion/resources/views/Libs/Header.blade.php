@@ -5,4 +5,8 @@
     <title>Fundación</title>
 </head>
 <body>
-<div class="conteiner">
+@include('Libs.Nav')
+<div class="container-md my-5">
+    <div class="row mt-3">
+
+    </div>

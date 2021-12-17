@@ -27,19 +27,20 @@ class LoginController extends Controller
     {
         $Correo = $request->post("Correo");
         $Clave = $request->post("Clave");
-        $Personal = DB::table("personal")->select("*")
+        $Personal = DB::table("personal")->select("idPersonal","Nombre","Apellido") 
         ->where("Email",$Correo)
         ->where("Clave",$Clave)
         ->get();
-       
         if(count($Personal) == 1){
             $parametros = [
-                "arrayUser" => $Personal
+                "id" => $Personal[0]->idPersonal,
+                "nombre"=> $Personal[0]->Nombre,
+                "apellido"=> $Personal[0]->Apellido
             ];
             return redirect()->route('Personal.index',$parametros);
         }
         elseif(count($Personal) == 0){
-            $Estudiante = DB::table("estudiantes")->select("*")
+            $Estudiante = DB::table("estudiantes")->select("idEstudiante")
             ->where("Email",$Correo)
             ->where("Clave",$Clave)
             ->get();

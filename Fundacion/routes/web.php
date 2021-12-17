@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstudiantesController;
 use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PersonalController;
@@ -27,3 +28,4 @@ Route::resource('/Personal', PersonalController::class);
 Route::post('/Login/diferenciar', [LoginController::class,'diferenciar'])->name("Login.diferenciar");
 /*Route::resource('Login', 'LoginController');*/
 Route::resource('/Login',LoginController::class);
+Route::resource('/Estudiantes', EstudiantesController::class);

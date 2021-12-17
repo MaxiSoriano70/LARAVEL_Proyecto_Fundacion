@@ -1,40 +1,41 @@
 @include('Libs.Header')
-    <!--<div style="padding-top: 50px;
+<!--<div style="padding-top: 50px;
     padding-bottom: 50px"></div>-->
-    <h1 class="text-center">Fundaciones</h1>
-    <h3 class="text-center">Detalles de tus Fundaciones</h3>
+    <h1 class="text-center">Estudiantes</h1>
+    <h3 class="text-center">Tabla de los estudiantes</h3>
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Institucion</th>
-                <th>Direccion</th>
-                <th>Telefono</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
                 <th>Email</th>
+                <th>Telefono</th>
+                <th>Inscripto</th>
                 <th>Show</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($arrayInstitucion as $dato)
+            @foreach ($arrayEstudiantes as $dato)
                             <tr>
-                                <td>{{$dato->idInstitucion}}</td>
+                                <td>{{$dato->idEstudiante}}</td>
                                 <td>{{$dato->Nombre}}</td>
-                                <td>{{$dato->Direccion}}</td>
-                                <td>{{$dato->Telefono}}</td>
+                                <td>{{$dato->Apellido}}</td>
+                                <td>{{$dato->Dni}}</td>
                                 <td>{{$dato->Email}}</td>
+                                <td>{{$dato->Telefono}}</td>
+                                <td>{{$dato->Inscripto}}</td>
                                 <td>
-                                    <a href="{{route('Institucion.show', $dato->idInstitucion)}}" class="btn btn-primary">Detalle</button>
+                                    <a href="#">Detalle</button>
                                 </td>
                                 <td>
-                                    <a href="{{route('Institucion.edit', $dato->idInstitucion)}}" class="btn btn-secondary">Editar</a>
+                                    <a href="#">Editar</a>
                                 </td>
                                 <td>
-                                    <form action="{{ route('Institucion.destroy', $dato->idInstitucion) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    <form action="#">Eliminar</button>
                                     </form>
                                 
                                 </td>
@@ -44,17 +45,18 @@
         <tfoot>
             <tr>
                 <th>Id</th>
-                <th>Institucion</th>
-                <th>Direccion</th>
-                <th>Telefono</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
                 <th>Email</th>
+                <th>Telefono</th>
+                <th>Inscripto</th>
                 <th>Show</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
         </tfoot>
     </table>
-
 @include('Libs.Footer')
 <script>
     $(document).ready(function() {

@@ -1,3 +1,4 @@
+</div>
 <footer class="footer text-center bg-secondary text-white">
     <div class="container">
         <div class="row">
