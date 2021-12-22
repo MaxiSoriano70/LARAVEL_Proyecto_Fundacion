@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\CursosController;
 use App\Http\Controllers\EstudiantesController;
 use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\LoginController;
@@ -18,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 php artisan make:controller NameController --resource
 php artisan route:list
 */
+/*Route::resource('Login', 'LoginController');*/
 
 Route::get('/', function () {
     return view("welcome");
@@ -26,6 +29,8 @@ Route::get('/', function () {
 Route::resource('/Institucion', InstitucionController::class);
 Route::resource('/Personal', PersonalController::class);
 Route::post('/Login/diferenciar', [LoginController::class,'diferenciar'])->name("Login.diferenciar");
-/*Route::resource('Login', 'LoginController');*/
 Route::resource('/Login',LoginController::class);
 Route::resource('/Estudiantes', EstudiantesController::class);
+Route::resource('/Personal',PersonalController::class);
+Route::resource('/Categorias',CategoriasController::class);
+Route::resource('/Cursos',CursosController::class);

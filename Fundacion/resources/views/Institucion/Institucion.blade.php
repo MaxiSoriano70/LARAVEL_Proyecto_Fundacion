@@ -25,10 +25,10 @@
                                 <td>{{$dato->Telefono}}</td>
                                 <td>{{$dato->Email}}</td>
                                 <td>
-                                    <a href="{{route('Institucion.show', $dato->idInstitucion)}}" class="btn btn-primary">Detalle</button>
+                                    <a href="{{route('Institucion.show', $dato->idInstitucion)}}" class="btn btn-primary">Detalle</a>
                                 </td>
                                 <td>
-                                    <a href="{{route('Institucion.edit', $dato->idInstitucion)}}" class="btn btn-secondary">Editar</a>
+                                    <a href="{{route('Institucion.edit', $dato->idInstitucion)}}" class="btn btn-warning">Editar</a>
                                 </td>
                                 <td>
                                     <form action="{{ route('Institucion.destroy', $dato->idInstitucion) }}" method="POST">

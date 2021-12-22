@@ -40,7 +40,49 @@ class EstudiantesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'Nombre' => 'required|max:45',
+            'Apellido' => 'required|max:45',
+            'Dni' => 'required_with:end_page|integer|min:8',
+            'Email' => 'email:rfc,dns',
+            'Clave' => 'required:min(8)->letters()->mixedCase()->numbers()',
+            'Clave_c' => 'required:min(8)->letters()->mixedCase()->numbers()',
+        ]);
+        $Clave_1 = $request->post("Clave");
+        $Clave_2 = $request->post("Clave_c");
+        if($Clave_1===$Clave_2){
+            $Nombre = $request->post("Nombre");
+            $Apellido = $request->post("Apellido");
+            $Dni = $request->post("Dni");
+            $Email = $request->post("Email");
+            $Telefono = $request->post("Telefono");
+            $Fecha_de_nacimiento = $request->post("Fecha_de_nacimiento");
+            $Direccion = $request->post("Direccion");
+            $Codigo_Area = $request->post("Codigo_Area");
+            if($Telefono == '') {
+                $Telefono = NULL;
+            }
+            if($Codigo_Area == '') {
+                $Codigo_Area = NULL;
+            }
+            if($Fecha_de_nacimiento == '') {
+                $Fecha_de_nacimiento = NULL;
+            }
+            if($Direccion == '') {
+                $Direccion = NULL;
+            }
+            $Respuesta=DB::insert("INSERT INTO estudiantes(Nombre,Apellido,Dni,Email,Clave,Codigo_Area,Telefono,Fecha_de_Nacimiento,Direccion)
+            VALUES (?,?,?,?,?,?,?,?,?)", [$Nombre,$Apellido,$Dni,$Email,$Clave_1,$Codigo_Area,$Telefono,$Fecha_de_nacimiento,$Direccion]);
+            if($Respuesta){
+                return redirect()->route('Estudiantes.index');
+            }
+            else{
+                return redirect()->route('Institucion.index');
+            }
+        }
+        else{
+            echo "Claves no son igules.";
+        }
     }
 
     /**
@@ -51,7 +93,12 @@ class EstudiantesController extends Controller
      */
     public function show($id)
     {
-        //
+        $estudiantes = DB::table("estudiantes")->select("*")->where("idEstudiante",$id)->get();
+        /*$institucion = DB::select("SELECT * FROM institucion WHERE idInstitucion = $id")->get();*/
+        $parametros = [
+            "arrayEstudiantes" => $estudiantes
+        ];
+        return view("Estudiantes.Mostrar_Estudiantes", $parametros);
     }
 
     /**
@@ -62,7 +109,11 @@ class EstudiantesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estudiante = DB::table("estudiantes")->select("*")->where("idEstudiante",$id)->get();
+        $parametros = [
+            "arrayEstudiante" => $estudiante
+        ];
+        return view("Estudiantes.Editar_Estudiantes", $parametros);
     }
 
     /**
@@ -74,7 +125,38 @@ class EstudiantesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'Nombre' => 'required|max:45',
+            'Apellido' => 'required|max:45',
+            'Dni' => 'required_with:end_page|integer|min:8',
+            'Email' => 'email:rfc,dns',
+            'Clave' => 'required:min(8)->letters()->mixedCase()->numbers()',
+            'Clave_c' => 'required:min(8)->letters()->mixedCase()->numbers()',
+        ]);
+        $Clave_1 = $request->post("Clave");
+        $Clave_2 = $request->post("Clave_c");
+        if($Clave_1===$Clave_2){
+            $Nombre = $request->post("Nombre");
+            $Apellido = $request->post("Apellido");
+            $Dni = $request->post("Dni");
+            $Email = $request->post("Email");
+            $Telefono = $request->post("Telefono");
+            $Fecha_de_nacimiento = $request->post("Fecha_de_nacimiento");
+            $Direccion = $request->post("Direccion");
+            $Codigo_Area = $request->post("Codigo_Area");
+
+            $Respuesta=DB::update("UPDATE estudiantes SET Nombre=?,Apellido=?,Dni=?,Email=?,Clave=?,Codigo_Area=?,Telefono=?,Fecha_de_Nacimiento=?,Direccion=?
+            WHERE idEstudiante=?", [$Nombre,$Apellido,$Dni,$Email,$Clave_1,$Codigo_Area,$Telefono,$Fecha_de_nacimiento,$Direccion,$id]);
+            if($Respuesta){
+                return redirect()->route('Estudiantes.show',[$id]);
+            }
+            else{
+                return redirect()->route('Institucion.index');
+            }
+        }
+        else{
+            echo "Claves no son igules.";
+        }
     }
 
     /**
@@ -85,6 +167,12 @@ class EstudiantesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Respuesta=DB::table('estudiantes')->where('idEstudiante', $id)->delete();
+        if($Respuesta){
+            return redirect()->route('Estudiantes.index');
+        }
+        else{
+            echo "Estudiante no eliminado ERROR.";
+        }
     }
 }

@@ -1,4 +1,4 @@
-@include('Nav.Nav')
+@include('Libs.Header')
 <h1>Hola soy el show</h1>
 <table id="example" class="table table-striped" style="width:100%">
     <thead>
@@ -74,9 +74,10 @@
         @endforeach
     </tbody>
 </table>
-@include('Footer.Footer')
+@include('Libs.Footer')
 <script>
     $(document).ready(function() {
         $('#example').DataTable();
     } );
 </script>
+@include('Libs.Finally)
