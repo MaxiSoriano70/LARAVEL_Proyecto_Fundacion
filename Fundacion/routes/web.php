@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\Cursos_TiposController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\EstudiantesController;
 use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Personal_CursosController;
 use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\Profesor_CursosController;
+use App\Http\Controllers\TiposCursosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +38,6 @@ Route::resource('/Estudiantes', EstudiantesController::class);
 Route::resource('/Personal',PersonalController::class);
 Route::resource('/Categorias',CategoriasController::class);
 Route::resource('/Cursos',CursosController::class);
+Route::resource('/Cursos_Tipos',Cursos_TiposController::class);
+Route::resource('/TiposCursos',TiposCursosController::class)->except("show");
+Route::resource('/Profesor_Cursos',Profesor_CursosController::class);
