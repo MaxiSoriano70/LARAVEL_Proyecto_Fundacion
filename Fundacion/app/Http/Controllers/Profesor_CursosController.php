@@ -166,7 +166,6 @@ class Profesor_CursosController extends Controller
     {
         $curso=DB::select("SELECT idCursoXTipo FROM personalxcursos WHERE idPersonalXCurso=$id");
         $id_Curso=$curso[0]->idCursoXTipo;
-        var_dump($id_Curso);
         $Respuesta=DB::table('personalxcursos')->where('idPersonalXCurso', $id)->delete();
         if($Respuesta){
             $Respuesta1=DB::update("UPDATE cursosxtipos SET Asignado=0 WHERE idCursoXTipo=?", [$id_Curso]);

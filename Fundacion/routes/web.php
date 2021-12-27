@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\Cursos_TiposController;
 use App\Http\Controllers\CursosController;
+use App\Http\Controllers\Estudiantes_CursosController;
 use App\Http\Controllers\EstudiantesController;
 use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\LoginController;
@@ -41,3 +42,4 @@ Route::resource('/Cursos',CursosController::class);
 Route::resource('/Cursos_Tipos',Cursos_TiposController::class);
 Route::resource('/TiposCursos',TiposCursosController::class)->except("show");
 Route::resource('/Profesor_Cursos',Profesor_CursosController::class);
+Route::resource('/Estudiantes_Cursos',Estudiantes_CursosController::class);
