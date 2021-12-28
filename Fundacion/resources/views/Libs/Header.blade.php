@@ -4,9 +4,6 @@
     @include('Libs.Head')
     <title>Fundación</title>
 </head>
-<body>
+<body class="bg-color2 color2">
 @include('Libs.Nav')
-<div class="container-md my-5">
-    <div class="row mt-5">
-
-    </div>
+<div class="container-md">

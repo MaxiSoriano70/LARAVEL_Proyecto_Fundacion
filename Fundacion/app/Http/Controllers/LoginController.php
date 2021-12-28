@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Null_;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -27,29 +28,39 @@ class LoginController extends Controller
     {
         $Correo = $request->post("Correo");
         $Clave = $request->post("Clave");
-        $Personal = DB::table("personal")->select("idPersonal","Nombre","Apellido") 
+        $Personal = DB::table("personal")->select("idPersonal","Nombre","Apellido","idTipo")
         ->where("Email",$Correo)
         ->where("Clave",$Clave)
         ->get();
         if(count($Personal) == 1){
-            $parametros = [
-                "id" => $Personal[0]->idPersonal,
-                "nombre"=> $Personal[0]->Nombre,
-                "apellido"=> $Personal[0]->Apellido
-            ];
-            return redirect()->route('Personal.index',$parametros);
+            $id = $Personal[0]->idPersonal;
+            $nombre = $Personal[0]->Nombre;
+            $apellido = $Personal[0]->Apellido;
+            $idTipo = $Personal[0]->idTipo;
+            Session::put('id', $id);
+            session()->put("id", $id);
+            session()->push('nombre', $nombre);
+            session()->push('apellido', $apellido);
+            session()->push('idtipo', $idTipo);
+
+            return redirect()->route('Welcome');
         }
         elseif(count($Personal) == 0){
-            $Estudiante = DB::table("estudiantes")->select("idEstudiante")
+            $Estudiante = DB::table("estudiantes")->select("idEstudiante","Nombre","Apellido","idTipo")
             ->where("Email",$Correo)
             ->where("Clave",$Clave)
             ->get();
             if(count($Estudiante) == 1){
-                $parametros = [
-                    "arrayUser" => $Estudiante
-                ];
-                
-                return view("Usuarios.index", $parametros);
+                $id = $Estudiante[0]->idEstudiante;
+                $nombre = $Estudiante[0]->Nombre;
+                $apellido = $Estudiante[0]->Apellido;
+                $idTipo = $Estudiante[0]->idTipo;
+                session()->put("id", $id);
+                session()->push('nombre', $nombre);
+                session()->push('apellido', $apellido);
+                session()->push('idtipo', $idTipo);
+
+                /*return redirect()->route('Login.iniciar_session',$parametros);*/
             }
             else{
                 echo "No estas Registrado";
@@ -59,7 +70,6 @@ class LoginController extends Controller
             echo 'Usted no esta Registrado en el Sistema';
         }
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -67,7 +77,6 @@ class LoginController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -78,7 +87,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-    
+
     }
 
     /**
@@ -123,6 +132,6 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

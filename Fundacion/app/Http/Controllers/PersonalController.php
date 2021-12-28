@@ -14,25 +14,14 @@ class PersonalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(/*Request $request*/)
+    public function index()
     {
-
-        /*$id = $request->get("id");
-        $nombre = $request->get("nombre");
-        $apellido = $request->get("apellido");
-
-        session()->put("id", $id);
-        session()->push('nombre', $nombre);
-        session()->push('apellido', $apellido);
-        var_dump(session("id"));
-        var_dump(session("nombre"));
-        var_dump(session("apellido"));*/
         $personal = DB::table("personal")->select("*")->get();
         $parametros = [
             "arrayPersonal" => $personal
         ];
         return view("Personal.Personal", $parametros);
-        
+
         /*echo "<h1> Hola esta es la ventana de Personal</h1>";*/
     }
 

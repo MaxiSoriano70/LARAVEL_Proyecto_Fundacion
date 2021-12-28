@@ -31,10 +31,10 @@ Route::get('/', function () {
     return view("welcome");
 });
 
-Route::resource('/Institucion', InstitucionController::class);
-Route::resource('/Personal', PersonalController::class);
 Route::post('/Login/diferenciar', [LoginController::class,'diferenciar'])->name("Login.diferenciar");
 Route::resource('/Login',LoginController::class);
+Route::resource('/Institucion', InstitucionController::class);
+Route::resource('/Personal', PersonalController::class);
 Route::resource('/Estudiantes', EstudiantesController::class);
 Route::resource('/Personal',PersonalController::class);
 Route::resource('/Categorias',CategoriasController::class);

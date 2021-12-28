@@ -1,0 +1,57 @@
+.info{
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	background-color: #454546;
+	color: #ffffff;
+	width: 100%;
+	height: 50px;
+	border-bottom: 2px solid #ffffff;
+	border-top: 2px solid #ffffff;
+}
+.entrega, .productos ,.contacto{
+	font-size: 20px;
+	padding: 0px 10px;
+	border-left: 3px solid #ffffff;
+	border-right: 3px solid #ffffff;
+}
+.fa-shipping-fast, .fa-tshirt, .fa-phone-alt{
+	padding: 0px 5px;
+}
+@media screen and (max-width: 1080px){
+	.entrega, .productos ,.contacto{
+		font-size: 15px;
+		padding: 0px 10px;
+		border-left: 3px solid #ffffff;
+		border-right: 3px solid #ffffff;
+	}
+}
+@media screen and (max-width: 830px){
+	.entrega, .productos ,.contacto{
+		font-size: 13px;
+		padding: 0px 10px;
+		border-left: 3px solid #ffffff;
+		border-right: 3px solid #ffffff;
+	}
+}
+@media screen and (max-width: 735px){
+	.info{
+		display: block;
+		width: 100%;
+		height: auto;
+		border-bottom: 0px solid #ffffff;
+		border-top: 3px solid #ffffff;
+		border-left: 0px solid #ffffff;
+		border-right: 0px solid #ffffff;
+	}
+	.entrega, .productos ,.contacto{
+		text-align: center;
+		font-size: 15px;
+		margin-right: auto;
+		margin-left: auto;
+		padding: 5px 0px;
+		border-left: 0px solid #ffffff;
+		border-right: 0px solid #ffffff;
+		border-bottom: 3px solid #ffffff;
+	}
+}
