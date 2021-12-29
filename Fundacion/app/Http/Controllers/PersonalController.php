@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use GrahamCampbell\ResultType\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
 class PersonalController extends Controller
@@ -49,12 +50,16 @@ class PersonalController extends Controller
             'Apellido' => 'required|max:45',
             'Dni' => 'required_with:end_page|integer|min:8',
             'Email' => 'email:rfc,dns',
-            'Clave' => ['required',
-            Password::min(8)
-            ->letters()
+            'Clave' => ['required', 'confirmed', Password::min(8)->letters()
             ->mixedCase()
-            ->numbers()],
-            'Clave_c' => 'password:min(8)->letters()->mixedCase()->numbers()',
+            ->numbers()
+            ->symbols()
+            ->uncompromised()],
+            'Clave_c' => ['required', 'confirmed', Password::min(8)->letters()
+            ->mixedCase()
+            ->numbers()
+            ->symbols()
+            ->uncompromised()],
             'idTipo' => 'required',
         ]);
         $Clave_1 = $request->post("Clave");
@@ -105,7 +110,6 @@ class PersonalController extends Controller
     {
         //
         $personal = DB::table("personal")->select("*")->where("idPersonal",$id)->get();
-        /*$institucion = DB::select("SELECT * FROM institucion WHERE idInstitucion = $id")->get();*/
         $parametros = [
             "arrayPersonal" => $personal
         ];
@@ -142,12 +146,16 @@ class PersonalController extends Controller
             'Apellido' => 'required|max:45',
             'Dni' => 'required_with:end_page|integer|min:8',
             'Email' => 'email:rfc,dns',
-            /*'Clave' => ['required',
-            Password::min(8)
-            ->letters()
+            'Clave' => ['required', 'confirmed', Password::min(8)->letters()
             ->mixedCase()
-            ->numbers()],*/
-            /*'Clave_c' => 'password:min(8)->letters()->mixedCase()->numbers()',*/
+            ->numbers()
+            ->symbols()
+            ->uncompromised()],
+            'Clave_c' => ['required', 'confirmed', Password::min(8)->letters()
+            ->mixedCase()
+            ->numbers()
+            ->symbols()
+            ->uncompromised()],
             'idTipo' => 'required',
         ]);
         $Clave_1 = $request->post("Clave");

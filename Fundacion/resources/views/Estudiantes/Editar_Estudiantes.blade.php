@@ -62,7 +62,7 @@
       </div>
     <div class="mb-3">
         <label class="form-label">Fecha de Nacimiento</label>
-        <input name="Fecha_de_nacimiento" type="date" class="form-control" id="FechadeNacimiento" value="{{$item->Fecha_de_Nacimiento}}">
+        <input name="Fecha_Nacimiento" type="date" class="form-control" id="FechadeNacimiento" value="{{$item->Fecha_Nacimiento}}">
       </div>
     <div class="mb-3">
         <label class="form-label">Direccion</label>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministrarController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\Cursos_TiposController;
 use App\Http\Controllers\CursosController;
@@ -7,10 +8,12 @@ use App\Http\Controllers\Estudiantes_CursosController;
 use App\Http\Controllers\EstudiantesController;
 use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Mis_CursosController;
 use App\Http\Controllers\Personal_CursosController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\Profesor_CursosController;
 use App\Http\Controllers\TiposCursosController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,16 +30,20 @@ php artisan route:list
 */
 /*Route::resource('Login', 'LoginController');*/
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view("welcome");
-});
-
+})->name("Welcome");*/
+/*BASE64 IMG.
+BLOB */
+Route::resource('/Welcome', WelcomeController::class)->except("create","store","show","edit","update","destroy");
+Route::resource('Mis_Cursos', Mis_CursosController::class)->except("create","store","edit","update","destroy");
 Route::post('/Login/diferenciar', [LoginController::class,'diferenciar'])->name("Login.diferenciar");
 Route::resource('/Login',LoginController::class);
 Route::resource('/Institucion', InstitucionController::class);
 Route::resource('/Personal', PersonalController::class);
 Route::resource('/Estudiantes', EstudiantesController::class);
 Route::resource('/Personal',PersonalController::class);
+Route::resource('/Administrar',AdministrarController::class)->except("create","store","show","edit","update","destroy");
 Route::resource('/Categorias',CategoriasController::class);
 Route::resource('/Cursos',CursosController::class);
 Route::resource('/Cursos_Tipos',Cursos_TiposController::class);

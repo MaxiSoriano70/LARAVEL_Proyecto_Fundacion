@@ -1,21 +1,35 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-color1 fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="{{ URL::to('/assets/img/Logo.png') }}" style="width: 35px; height: 35px;"></a>
+        <a class="navbar-brand" href="{{route('Welcome.index');}}"><img src="{{ URL::to('/assets/img/Logo.png') }}" style="width: 35px; height: 35px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><b><a class="nav-link active" aria-current="page" href="#">INI Computación</a></b></li>
                 <li class="nav-item"><b><a class="nav-link" href="#">Cursos</a></b></li>
-                <li class="nav-item"><b><a class="nav-link" href="#">Iniciar Sesión</a></b></li>
+
+                @if (session()->get('id'))
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><b>Nombre y Apellido</b></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><b>{{ session()->get('nombre'); }} {{ session()->get('apellido'); }}</b></a>
                     <ul class="dropdown-menu dropdown-menu-end bg-color2" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#"><b>Datos Personales</a></b></li>
-                        <li><a class="dropdown-item" href="#"><b>Mis cursos</a></b></li>
+                        @if (session()->get('id')==1)
+                        <li><a class="dropdown-item" href="{{route('Administrar.index');}}"><b>Administrar</b></a></li>
+                        <li><a class="dropdown-item" href="#"><b>Gestionar Cobros</b></a></li>
+                        @else
+                        <li><a class="dropdown-item" href="{{route('Login.show', session()->get('id'))}}"><b>Datos Personales</a></b></li>
+                        <li><a class="dropdown-item" href="{{route('Mis_Cursos.index', session()->get('id'))}}"><b>Mis cursos</a></b></li>
+                        @endif
                         <li></b><hr class="dropdown-divider" /></b></li>
-                        <li><a class="dropdown-item" href="#"><b>Cerrar sesión</b></a></li>
+                        <li><form action="{{ route('Login.destroy', session()->get('id')) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="dropdown-item"><b>Cerrar sesión</b></button>
+                        </li>
+                        </form>
                     </ul>
                 </li>
+                @else
+                <li class="nav-item"><b><a class="nav-link" href="{{route('Login.index');}}">Iniciar Sesión</a></b></li>
+                @endif
             </ul>
         </div>
     </div>

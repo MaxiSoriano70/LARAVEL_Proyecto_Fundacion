@@ -50,12 +50,12 @@
     @include('Libs.Categorias')
 </div>
 <div class="container-md">
-<div class="row my-3">
+<div class="row my-3"></div>
     <div class="d-flex justify-content-center">
         <h2>CURSOS</h2>
     </div>
 </div>
-<div class="container-md mt-3 mb-5">
+< class="container-md mt-3 mb-5">
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
           <div class="card h-100">
@@ -106,6 +106,15 @@
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
+
 <div class="row my-5">
     <div class="d-flex justify-content-center">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d673.5215249349906!2d-65.41518245378414!3d-24.787493479918638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bc3ba60400ea9%3A0x9ed0011f055584f6!2sIni%20Capacitaci%C3%B3n%20Profesional!5e0!3m2!1ses-419!2sar!4v1640671424683!5m2!1ses-419!2sar" width="1000" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>

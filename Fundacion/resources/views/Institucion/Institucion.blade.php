@@ -2,7 +2,18 @@
     <!--<div style="padding-top: 50px;
     padding-bottom: 50px"></div>-->
     <h1 class="text-center">Fundaciones</h1>
-    <h3 class="text-center">Detalles de tus Fundaciones</h3>
+    <!-- ESTOEN LOS DATATABLES -->
+    <div class="row mt-3 align-items-center">
+        <div class="col-md col-xl-4">
+            @include('Libs.Volver')
+        </div>
+         <div class="col-md col-xl-4">
+            <h3 class="text-center">Tabla de tus Fundaciones</h3>
+        </div>
+        <div class="col-md col-xl-4">
+        </div>
+    </div>
+    <!-- -->
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
@@ -36,7 +47,7 @@
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Eliminar</button>
                                     </form>
-                                
+
                                 </td>
                             </tr>
                         @endforeach
@@ -54,7 +65,6 @@
             </tr>
         </tfoot>
     </table>
-
 @include('Libs.Footer')
 <script>
     $(document).ready(function() {

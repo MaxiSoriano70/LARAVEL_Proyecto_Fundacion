@@ -19,7 +19,8 @@
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
-    <button type="submit" class="btn btn-primary">Ingresar</button>
+    <button type="submit" class="btn btn-primary mx-2">Ingresar</button>
+    <a href="{{route('Login.create');}}" type="button" class="btn btn-success mx-2">Registrarse</a>
   </form>
 </div>
 </div>

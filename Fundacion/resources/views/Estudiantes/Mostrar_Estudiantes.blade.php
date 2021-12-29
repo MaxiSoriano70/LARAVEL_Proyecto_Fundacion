@@ -27,10 +27,10 @@
             @endif
             </h5>
           <h5 class="card-text"><b>Fecha de Nacimiento: </b>
-            @if ($item->Fecha_de_Nacimiento=="")
+            @if ($item->Fecha_Nacimiento=="")
                 "No definido"
             @else
-            {{$item->Fecha_de_Nacimiento}}
+            {{$item->Fecha_Nacimiento}}
             @endif
             </h5>
           <h5 class="card-text"><b>Dirección: </b>
