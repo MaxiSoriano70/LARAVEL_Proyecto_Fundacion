@@ -6,7 +6,7 @@
 </div>
 <div class="row mt-5">
 <div class="d-flex justify-content-center">
-<form class="mt-3 w-75 needs-validation" novalidate method="post" action="{{route('Cursos.store');}}">
+<form class="mt-3 w-75 needs-validation" novalidate method="post" enctype="multipart/form-data" action="{{route('Cursos.store');}}">
     @csrf
     <div class="mb-3">
         <label class="form-label" for="Nombre">*Nombre</label>
@@ -30,6 +30,10 @@
             <option value="{{$item->idCategoria}}">{{$item->Nombre}}</option>
           @endforeach
         </select>
+    </div>
+    <div class="my-3">
+        <label class="form-label" for="Imagen">Imagen</label><br>
+        <input class="Selecionar-Imagen" type="file" name="fileimage" id="fileimage" accept="image/*">
     </div>
     <div id="emailHelp" class="form-text my-3">Los campos con * son abligatorios.</div>
     <div class="mb-3">

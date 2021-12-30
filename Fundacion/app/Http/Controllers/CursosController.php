@@ -54,8 +54,9 @@ class CursosController extends Controller
         $Nombre = $request->post("Nombre");
         $Descripcion = $request->post("Descripcion");
         $Categoria = $request->post("Categoria");
+        $image = base64_encode(file_get_contents($request->file('fileimage')));
 
-        $Respuesta=DB::insert("INSERT INTO cursos(Nombre, Descripcion, idCategoria) VALUES (?,?,?)", [$Nombre,$Descripcion,$Categoria]);
+        $Respuesta=DB::insert("INSERT INTO cursos(Nombre, Descripcion, idCategoria, Imagen) VALUES (?,?,?,?)", [$Nombre,$Descripcion,$Categoria,$image]);
         if($Respuesta){
             return redirect()->route('Cursos.index');
         }
@@ -119,8 +120,10 @@ class CursosController extends Controller
         $Nombre = $request->post("Nombre");
         $Descripcion = $request->post("Descripcion");
         $Categoria = $request->post("Categoria");
+        $image = base64_encode(file_get_contents($request->file('fileimage')));
 
-        $Respuesta=DB::update("UPDATE cursos SET Nombre=?, Descripcion=?, idCategoria=? WHERE idCurso=?", [$Nombre,$Descripcion,$Categoria,$id]);
+
+        $Respuesta=DB::update("UPDATE cursos SET Nombre=?, Descripcion=?,Imagen=?, idCategoria=? WHERE idCurso=?", [$Nombre,$Descripcion,$image,$Categoria,$id]);
         if($Respuesta){
             return redirect()->route('Cursos.index');
         }

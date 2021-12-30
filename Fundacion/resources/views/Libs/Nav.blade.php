@@ -28,7 +28,8 @@
                     </ul>
                 </li>
                 @else
-                <li class="nav-item"><b><a class="nav-link" href="{{route('Login.index');}}">Iniciar Sesión</a></b></li>
+                <li class="nav-item"><b><a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar Sesión</a></b></li>
+                <li class="nav-item"><b><a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal1">Registrarse</a></b></li>
                 @endif
             </ul>
         </div>

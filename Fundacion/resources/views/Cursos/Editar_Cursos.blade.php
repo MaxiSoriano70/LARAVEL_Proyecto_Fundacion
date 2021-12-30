@@ -7,7 +7,7 @@
 <div class="row mt-5">
 <div class="d-flex justify-content-center">
 @foreach ($arrayCurso as $item)
-<form class="mt-3 w-75 needs-validation" novalidate method="post" action="{{route('Cursos.update', $item->idCurso);}}">
+<form class="mt-3 w-75 needs-validation" novalidate method="post" enctype="multipart/form-data" action="{{route('Cursos.update', $item->idCurso);}}">
     @csrf
     @method("PUT")
     <div class="mb-3">
@@ -35,6 +35,10 @@
               @endif
           @endforeach
         </select>
+    </div>
+    <div class="my-3">
+        <label class="form-label" for="Imagen">Imagen</label><br>
+        <input class="Selecionar-Imagen" type="file" name="fileimage" id="fileimage" accept="image/*">
     </div>
     <div id="emailHelp" class="form-text my-3">Los campos con * son abligatorios.</div>
     <div class="mb-3">

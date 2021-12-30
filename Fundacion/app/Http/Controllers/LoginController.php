@@ -45,7 +45,6 @@ class LoginController extends Controller
             session()->put('nombre', $nombre);
             session()->put('apellido', $apellido);
             session()->put('idtipo', $idTipo);
-
             return redirect()->route('Welcome.index');
         }
         elseif(count($Personal) == 0){
@@ -62,7 +61,6 @@ class LoginController extends Controller
                 session()->put('nombre', $nombre);
                 session()->put('apellido', $apellido);
                 session()->put('idtipo', $idTipo);
-
                 return redirect()->route('Welcome.index');
             }
             else{
