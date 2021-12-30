@@ -115,8 +115,9 @@
         </div>
     </div>
 </div>
+
 @else
-<h1>TU NO ERES UN ADMIN</h1>
+@include('Carteles.Acceso_negado')
 @endif
 @include('Libs.Footer')
 @include('Libs.Finally')

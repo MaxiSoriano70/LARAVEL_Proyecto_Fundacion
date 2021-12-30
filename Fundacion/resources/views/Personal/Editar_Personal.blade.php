@@ -1,4 +1,5 @@
 @include('Libs.Header')
+@if (session()->get('id')==1)
 <div class="row mt-5">
     <div class="d-flex justify-content-center">
         <h1>EDITAR PERSONAL</h1>
@@ -96,5 +97,8 @@
 @endforeach
 </div>
 </div>
+@else
+@include('Carteles.Acceso_negado')
+@endif
 @include('Libs.Footer')
 @include('Libs.Finally')

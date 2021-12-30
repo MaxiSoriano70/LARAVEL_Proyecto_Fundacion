@@ -1,4 +1,5 @@
 @include('Libs.Header')
+@if (session()->get('id')==1)
     <!--<div style="padding-top: 50px;
     padding-bottom: 50px"></div>-->
     <h1 class="text-center">Fundaciones</h1>
@@ -65,6 +66,9 @@
             </tr>
         </tfoot>
     </table>
+    @else
+@include('Carteles.Acceso_negado')
+@endif
 @include('Libs.Footer')
 <script>
     $(document).ready(function() {

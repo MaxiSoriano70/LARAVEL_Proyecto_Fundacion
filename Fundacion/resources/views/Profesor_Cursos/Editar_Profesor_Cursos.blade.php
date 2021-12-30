@@ -1,4 +1,5 @@
 @include('Libs.Header')
+@if (session()->get('id')==1)
 @foreach ($arrayProf_Curso as $item)
 <div class="row mt-5">
     <div class="d-flex justify-content-center">
@@ -43,6 +44,9 @@
   </form>
   </div>
 </div>
+@else
+@include('Carteles.Acceso_negado')
+@endif
 @endforeach
 @include('Libs.Footer')
 @include('Libs.Finally')

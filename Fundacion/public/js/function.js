@@ -37,7 +37,7 @@ $(document).ready(()=>{
         $.ajax({
             url:'Estudiantes',
             type: 'post',
-            data: {"Correo":email,"Clave":clave},
+            data: {"Nombre":nombre,"Apellido":apellido,"Dni":dni,"Email":email,"Clave":clave1,"Clave_c":clave2,"Codigo_Area":codigo_area,"Telefono":telefono,"Fecha_de_nacimiento":fecha_de_nacimiento,"Direccion":direccion},
             success:function(response){
                 console.log(response);
             },

@@ -50,77 +50,63 @@
     @include('Libs.Categorias')
 </div>
 <div class="container-md">
-<div class="row my-3"></div>
+<div class="row my-3" id="Cursos"></div>
     <div class="d-flex justify-content-center">
         <h2>CURSOS</h2>
     </div>
 </div>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-             <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-          </div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  @foreach ($arrayWelcome as $item)
+    <div class="col">
+      <div class="card">
+        <img src="data:image/png;base64,{{$item->Imagen}}" class="card-img-top" alt="...">
+        <div class="card-header bg-color4 border-danger text-center"><h4 class="color4">{{$item->Curso}}</h4></div>
+        <div class="card-body">
+          <h4 class="card-title text-center">Descripcion</h4>
+          <p class="card-text">
+            @if ($item->Descripcion=="")
+              "Sin Descripcion"
+            @else
+              {{$item->Descripcion}}
+            @endif
+          </p>
+          <h5 class="card-text"><b>Precio: </b>
+            @if ($item->Precio=="")
+              "No definido"
+            @else
+              {{$item->Precio}}
+            @endif
+          </h5>
+          <h5 class="card-text"><b>Modalidad: </b>
+            {{$item->M}}
+          </h5>
+          <h5 class="card-text"><b>Fecha de Inicio: </b>
+            @if ($item->Fecha_de_Inicio=="")
+              "No definido"
+            @else
+              {{$item->Fecha_de_Inicio}}
+            @endif
+          </h5>
         </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text text-center">This is a short card.</p>
-            </div>
-            <div class="card-footer">
-             <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-             <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-             <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-          </div>
+        <div class="card-footer border-danger text-center bg-color4">
+            <a href="{{route('Welcome.show', $item->idCursoXTipo)}}" type="button" class="btn btn-outline-light"><b>Detalle</b></a>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
+    </div>
+    @endforeach
+</div>
 <div class="row my-5">
     <div class="d-flex justify-content-center">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d673.5215249349906!2d-65.41518245378414!3d-24.787493479918638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bc3ba60400ea9%3A0x9ed0011f055584f6!2sIni%20Capacitaci%C3%B3n%20Profesional!5e0!3m2!1ses-419!2sar!4v1640671424683!5m2!1ses-419!2sar" width="1000" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </div>
+
+
+
+
+
 <!-- Modal Login-->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header bg-color1 color1">
@@ -263,7 +249,12 @@
     </div>
   </div>
 </div>
-<!--Terminal Modal de Registro-->
+
+
+
+
+
+
 </div>
 @include('Libs.Footer')
 <script>

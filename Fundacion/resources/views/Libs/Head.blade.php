@@ -19,3 +19,5 @@
 <script type="text/javascript" src="{{ asset('js/function.js') }}"></script>
 <!--TOKEN-->
 <meta name="csrf-token" content="{{csrf_token()}}">
+<!-- Nunito Font -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">

@@ -16,7 +16,7 @@ class Mis_CursosController extends Controller
     {
         if (session()->has('id')) {
             $idEstudiantes=session()->get('id');
-            $MisCursos=DB::select("SELECT c.Nombre as Curso,cxt.Comision,cxt.idCursoXTipo,Duracion,Fecha_de_Inicio,Fecha_de_Fin,Turno,Horario
+            $MisCursos=DB::select("SELECT c.Nombre as Curso,Imagen,cxt.Comision,cxt.idCursoXTipo,Duracion,Fecha_de_Inicio,Fecha_de_Fin,Turno,Horario
             FROM cursosxestudiantes cxe
             INNER JOIN cursosxtipos cxt
             INNER JOIN cursos c
@@ -55,6 +55,24 @@ class Mis_CursosController extends Controller
     public function store(Request $request)
     {
         //
+        $validate = $request->validate([
+            "Alumno"=>'required',
+            "Curso"=>'required'
+        ]);
+        $alumno=$request->post("Alumno");
+        $curso=$request->post("Curso");
+        $cursos_precio=DB::select("SELECT precio,vacantes from cursosxtipos WHERE idCursoXTipo=$curso");
+        $precio=$cursos_precio[0]->precio;
+        $vacantes=$cursos_precio[0]->vacantes;
+        if($cursos_precio){
+            $consulta=DB::insert("INSERT INTO cursosxestudiantes (idEstudiante,Total_a_Pagar,Deuda,idCursoXTipo) VALUES (?,?,?,?)",[$alumno,$precio,$precio,$curso]);
+            if($consulta){
+                $aux=$vacantes-1;
+                $actualizar=DB::update("UPDATE cursosxtipos SET vacantes=? WHERE idCursoXTipo=?",[$aux,$curso]);
+
+                return redirect()->route('Welcome.index');
+            }
+        }
     }
 
     /**
@@ -67,7 +85,7 @@ class Mis_CursosController extends Controller
     {
         if(session()->has('id')){
             $idKevin=session()->get('id');
-            $MisCursos=DB::select("SELECT c.Nombre as Curso,cxt.idCursoXTipo,Comision,Duracion,Fecha_de_Inicio,Fecha_de_Fin,Turno,Horario,Precio,tc.Nombre as M,cxe.Estado,Total_a_Pagar,Deuda
+            $MisCursos=DB::select("SELECT c.Nombre as Curso,Imagen,cxt.idCursoXTipo,Comision,Duracion,Fecha_de_Inicio,Fecha_de_Fin,Turno,Horario,Precio,tc.Nombre as M,cxe.idCursoXEstudiante,Estado,Total_a_Pagar,Deuda
             FROM cursosxestudiantes cxe
             INNER JOIN cursosxtipos cxt
             INNER JOIN cursos c
@@ -120,5 +138,20 @@ class Mis_CursosController extends Controller
     public function destroy($id)
     {
         //
+        $Datos=DB::select("SELECT idCursoXTipo FROM cursosxestudiantes WHERE idCursoXEstudiante=$id");
+        $idCursoXTipo=$Datos[0]->idCursoXTipo;
+        $Respuesta=DB::table('cursosxestudiantes')->where('idCursoXEstudiante', $id)->delete();
+        if($Respuesta){
+            $Vacantes_Cursos=DB::select("SELECT Vacantes from cursosxtipos where idCursoXTipo=$idCursoXTipo");
+            $Vacantes=$Vacantes_Cursos[0]->Vacantes;
+            $aux=$Vacantes+1;
+            if($Vacantes_Cursos){
+                    $Actualizar=DB::update("UPDATE cursosxtipos SET Vacantes=? WHERE idCursoXTipo=?",[$aux,$idCursoXTipo]);
+            }
+            return redirect()->route('Mis_Cursos.index');
+        }
+        else{
+            echo "Estudiante no eliminado del curso";
+        }
     }
 }

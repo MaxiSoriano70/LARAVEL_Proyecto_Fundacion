@@ -2,17 +2,6 @@
     <div class="container my-3">
         <h1 class="text-center">NOMBRE Y APELLIDO</h1>
     </div>
-    <div class="container my-3">
-        <div class="row">
-                <div class="col text-center">
-                <a href="#" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                    width="25" height="25"
-                    viewBox="0 0 172 172"
-                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,14.33333c-39.5815,0 -71.66667,32.08517 -71.66667,71.66667c0,39.5815 32.08517,71.66667 71.66667,71.66667c39.5815,0 71.66667,-32.08517 71.66667,-71.66667c0,-39.5815 -32.08517,-71.66667 -71.66667,-71.66667zM121.83333,93.16667h-28.66667v28.66667h-14.33333v-28.66667h-28.66667v-14.33333h28.66667v-28.66667h14.33333v28.66667h28.66667z"></path></g></g></svg>
-                     <b style="font-size:20px">Agregar</b></a>
-                </div>
-        </div>
-    </div>
     <div class="row mt-3 align-items-center">
         <div class="col-md col-xl-4">
             <div class="container my-3">
@@ -35,7 +24,7 @@
         @foreach ($arrayMisCursos as $item)
         <div class="col">
           <div class="card border-danger h-100">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="data:image/png;base64,{{$item->Imagen}}" class="card-img-top" alt="...">
             <div class="card-header bg-color4 border-danger text-center">
                 <h4 class="color4">{{$item->Curso}}</h4>
             </div>

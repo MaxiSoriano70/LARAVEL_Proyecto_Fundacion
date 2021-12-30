@@ -5,7 +5,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><b><a class="nav-link active" aria-current="page" href="#">INI Computación</a></b></li>
-                <li class="nav-item"><b><a class="nav-link" href="#">Cursos</a></b></li>
+                <li class="nav-item"><b><a class="nav-link" href="#Cursos">Cursos</a></b></li>
 
                 @if (session()->get('id'))
                 <li class="nav-item dropdown">
@@ -29,7 +29,7 @@
                 </li>
                 @else
                 <li class="nav-item"><b><a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar Sesión</a></b></li>
-                <li class="nav-item"><b><a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal1">Registrarse</a></b></li>
+                <li class="nav-item"><b><a class="nav-link" href="{{route('Login.create');}}">Registrarse</a></b></li>
                 @endif
             </ul>
         </div>

@@ -1,4 +1,5 @@
 @include('Libs.Header')
+@if (session()->get('id')==1)
 <h1>Hola soy el show</h1>
 <table id="example" class="table table-striped" style="width:100%">
     <thead>
@@ -74,6 +75,9 @@
         @endforeach
     </tbody>
 </table>
+@else
+@include('Carteles.Acceso_negado')
+@endif
 @include('Libs.Footer')
 <script>
     $(document).ready(function() {

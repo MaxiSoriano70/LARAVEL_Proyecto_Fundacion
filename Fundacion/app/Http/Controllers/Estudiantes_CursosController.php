@@ -85,6 +85,7 @@ class Estudiantes_CursosController extends Controller
             if($consulta){
                 $aux=$vacantes-1;
                 $actualizar=DB::update("UPDATE cursosxtipos SET vacantes=? WHERE idCursoXTipo=?",[$aux,$curso]);
+
                 return redirect()->route('Estudiantes_Cursos.index');
             }
         }

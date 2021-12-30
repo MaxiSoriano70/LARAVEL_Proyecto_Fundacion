@@ -1,16 +1,17 @@
-@if ($errors->has('Nombre')) 
+@if (session()->get('id')==1)
+@if ($errors->has('Nombre'))
     <div>*El campo Nombre no puede se null</div><br>
 
 @endif
-@if ($errors->has('Direccion')) 
+@if ($errors->has('Direccion'))
     <div>*El campo Direecion no puede se null</div><br>
 
 @endif
-@if ($errors->has('Telefono')) 
+@if ($errors->has('Telefono'))
     <div>*El campo Telefono no puede se null</div><br>
 
 @endif
-@if ($errors->has('Email')) 
+@if ($errors->has('Email'))
     <div>*El campo Email no puede se null y tiene que tener la siguiente estructura "example@example.com"</div><br>
 
 @endif
@@ -42,3 +43,6 @@
         <button type="submit">Actualizar</button>
     </form>
 @endforeach
+@else
+@include('Carteles.Acceso_negado')
+@endif

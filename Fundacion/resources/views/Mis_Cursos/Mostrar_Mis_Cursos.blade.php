@@ -25,7 +25,7 @@
     <div class="card border-danger">
         <div class="row no-gutters">
             <div class="col-md-6">
-                <img src="https://programmerclick.com/images/786/eba1eb57653addb050bfe80e9f7ce17a.png" alt="" class="card-img h-100 w-100">
+                <img src="data:image/png;base64,{{$item->Imagen}}" alt="" class="card-img h-100 w-100">
             </div>
             <div class="col-md-6">
                 <div class="card-header bg-color4 border-danger text-center">
@@ -71,13 +71,16 @@
                     </h4>
                 </div>
                 <div class="card-footer border-danger text-center bg-color4">
-                    <h4 class="card-text color4"><b>Estado:
+                    <h4 class="card-text color4">
                         @if ($item->Estado==0)
-                            PREINSCRIPTO!
+                        <form action="{{ route('Mis_Cursos.destroy', $item->idCursoXEstudiante) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button href="#" type="submit" class="btn btn-outline-light"><b>Darse de Baja</b></button>
+                        </form>
                         @else
-                            INSCRIPTO!
+                        <b>Estado: INSCRIPTO!</b>
                         @endif
-                    </b>
                     </h4>
                 </div>
             </div>

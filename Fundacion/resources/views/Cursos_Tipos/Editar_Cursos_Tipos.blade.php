@@ -1,4 +1,5 @@
 @include('Libs.Header')
+@if (session()->get('id')==1)
 @foreach ($arrayCursos_Tipos as $item)
 <div class="row mt-5">
     <div class="d-flex justify-content-center">
@@ -81,5 +82,8 @@
   </div>
 </div>
 @endforeach
+@else
+@include('Carteles.Acceso_negado')
+@endif
 @include('Libs.Footer')
 @include('Libs.Finally')

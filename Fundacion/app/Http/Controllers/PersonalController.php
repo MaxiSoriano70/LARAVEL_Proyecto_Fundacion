@@ -49,18 +49,7 @@ class PersonalController extends Controller
             'Nombre' => 'required|max:45',
             'Apellido' => 'required|max:45',
             'Dni' => 'required_with:end_page|integer|min:8',
-            'Email' => 'email:rfc,dns',
-            'Clave' => ['required', 'confirmed', Password::min(8)->letters()
-            ->mixedCase()
-            ->numbers()
-            ->symbols()
-            ->uncompromised()],
-            'Clave_c' => ['required', 'confirmed', Password::min(8)->letters()
-            ->mixedCase()
-            ->numbers()
-            ->symbols()
-            ->uncompromised()],
-            'idTipo' => 'required',
+            'Email' => 'email:rfc,dns'
         ]);
         $Clave_1 = $request->post("Clave");
         $Clave_2 = $request->post("Clave_c");
@@ -146,17 +135,6 @@ class PersonalController extends Controller
             'Apellido' => 'required|max:45',
             'Dni' => 'required_with:end_page|integer|min:8',
             'Email' => 'email:rfc,dns',
-            'Clave' => ['required', 'confirmed', Password::min(8)->letters()
-            ->mixedCase()
-            ->numbers()
-            ->symbols()
-            ->uncompromised()],
-            'Clave_c' => ['required', 'confirmed', Password::min(8)->letters()
-            ->mixedCase()
-            ->numbers()
-            ->symbols()
-            ->uncompromised()],
-            'idTipo' => 'required',
         ]);
         $Clave_1 = $request->post("Clave");
         $Clave_2 = $request->post("Clave_c");

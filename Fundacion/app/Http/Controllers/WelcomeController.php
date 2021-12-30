@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller
 {
@@ -14,7 +15,15 @@ class WelcomeController extends Controller
     public function index()
     {
         //
-        return view("Welcome");
+        $welcome=DB::select("SELECT c.Nombre as Curso,Descripcion,Imagen,cxt.idCursoXTipo,Duracion,Vacantes,Fecha_de_Inicio,Fecha_de_Fin,Turno,Horario,Precio,tc.Nombre as M FROM cursos c
+        INNER JOIN cursosxtipos cxt
+        INNER JOIN tipos_cursos tc
+        ON c.idCurso=cxt.idCurso
+        AND cxt.idTipo_Curso=tc.idTipo_Curso");
+        $parametros=[
+            "arrayWelcome"=>$welcome
+        ];
+        return view("Welcome",$parametros);
     }
 
     /**
@@ -46,7 +55,15 @@ class WelcomeController extends Controller
      */
     public function show($id)
     {
-        //
+        $welcome=DB::select("SELECT c.Nombre as Curso,Descripcion,Imagen,cxt.idCursoXTipo,Duracion,Vacantes,Fecha_de_Inicio,Fecha_de_Fin,Turno,Horario,Precio,tc.Nombre as M FROM cursos c
+        INNER JOIN cursosxtipos cxt
+        INNER JOIN tipos_cursos tc
+        ON c.idCurso=cxt.idCurso
+        AND cxt.idTipo_Curso=tc.idTipo_Curso WHERE cxt.idCursoXTipo=$id");
+        $parametros=[
+            "arrayWelcome"=>$welcome
+        ];
+        return view("Welcome.Detalle_Cursos",$parametros);
     }
 
     /**

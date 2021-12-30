@@ -47,16 +47,6 @@ class EstudiantesController extends Controller
             'Apellido' => 'required|max:45',
             'Dni' => 'required_with:end_page|integer|min:8',
             'Email' => 'email:rfc,dns',
-            'Clave' => ['required', 'confirmed', Password::min(8)->letters()
-            ->mixedCase()
-            ->numbers()
-            ->symbols()
-            ->uncompromised()],
-            'Clave_c' => ['required', 'confirmed', Password::min(8)->letters()
-            ->mixedCase()
-            ->numbers()
-            ->symbols()
-            ->uncompromised()]
         ]);
         $Clave_1 = $request->post("Clave");
         $Clave_2 = $request->post("Clave_c");
@@ -140,16 +130,6 @@ class EstudiantesController extends Controller
             'Apellido' => 'required|max:45',
             'Dni' => 'required_with:end_page|integer|min:8',
             'Email' => 'email:rfc,dns',
-            'Clave' => ['required', 'confirmed', Password::min(8)->letters()
-            ->mixedCase()
-            ->numbers()
-            ->symbols()
-            ->uncompromised()],
-            'Clave_c' => ['required', 'confirmed', Password::min(8)->letters()
-            ->mixedCase()
-            ->numbers()
-            ->symbols()
-            ->uncompromised()]
         ]);
         $Clave_1 = $request->post("Clave");
         $Clave_2 = $request->post("Clave_c");

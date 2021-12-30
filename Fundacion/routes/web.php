@@ -6,6 +6,7 @@ use App\Http\Controllers\Cursos_TiposController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\Estudiantes_CursosController;
 use App\Http\Controllers\EstudiantesController;
+use App\Http\Controllers\Institucion_DatosController;
 use App\Http\Controllers\InstitucionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Mis_CursosController;
@@ -35,8 +36,8 @@ php artisan route:list
 })->name("Welcome");*/
 /*BASE64 IMG.
 BLOB */
-Route::resource('/Welcome', WelcomeController::class)->except("create","store","show","edit","update","destroy");
-Route::resource('Mis_Cursos', Mis_CursosController::class)->except("create","store","edit","update","destroy");
+Route::resource('/Welcome', WelcomeController::class)->except("create","store","edit","update","destroy");
+Route::resource('Mis_Cursos', Mis_CursosController::class)->except("create","edit","update");
 Route::post('/Login/diferenciar', [LoginController::class,'diferenciar'])->name("Login.diferenciar");
 Route::resource('/Login',LoginController::class);
 Route::resource('/Institucion', InstitucionController::class);
